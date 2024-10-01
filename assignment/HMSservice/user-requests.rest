@@ -1,0 +1,59 @@
+@host=localhost:8080
+###
+
+
+
+GET /api/users/1
+Host: {{host}}
+Accept: application/json
+
+###
+
+GET /api/users/2
+Host: {{host}}
+Accept: application/json
+
+###
+
+GET /api/users/3
+Host: {{host}}
+Accept: application/json
+
+
+### should display first 10 records, sorted by 'name'
+
+GET /api/users
+Host: {{host}}
+Accept: application/json
+
+### should display first 10 records, sorted by 'name'
+
+GET /api/users
+Host: {{host}}
+Accept: application/xml
+
+### should display 10 records in the page 2 (11 to 20)
+
+GET /api/users?page=2
+Host: {{host}}
+Accept: application/json
+
+### should display 50 records in the page 2 (51 to 100)
+
+GET /api/users?page=2&size=50
+Host: {{host}}
+Accept: application/json
+
+###
+
+POST /api/users/login
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "rama@ghosp.com",
+    "password": "ramanath"
+}
+
+### 

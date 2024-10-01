@@ -1,0 +1,257 @@
+@host=localhost:8080
+###
+
+
+POST /userlogin/login
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "rama@ghosp.com",
+    "password": "ramanath"
+}
+
+###
+POST /userlogin/forgot-password
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "rama@ghosp.com"
+
+}
+
+###
+POST /userlogin/validate-otp
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "rama@ghosp.com",
+    "otp" : "123456"
+
+}
+
+###
+POST /userlogin/change-password
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "bharatreddy.1997@gmail.com",
+    "password": "Bharat"
+}
+
+### 
+
+
+POST /userlogin/login
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "bharatreddy.1997@gmail.com",
+    "password": "Bharat"
+}
+
+###
+
+GET /user-info/1
+Host: {{host}}
+Accept: application/json
+#returns data as DetailedUserDTO
+
+###
+
+# PATCH /user-info/save-image
+# Host: {{host}}
+# Accept: application/json
+
+# {
+#     "id":"1", 
+#     "profilePic" :base64imageString
+# }
+#
+
+#get the list of users for the team with teamId
+###
+GET /users/partial/1
+Host: {{host}}
+Accept: application/json
+###
+### Create Post
+
+POST /posts/post
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+
+"recognizer": {"id":1},
+"postType": "Post",
+"postString": "This is a new post",
+"postPicture": null,
+"recognizees": []
+}
+###
+### Create award
+
+POST /posts/post
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+
+"recognizer": {"id":1},
+"postType": "Award",
+"postString": "This is a new award",
+"coreValue": {"coreValueID":3},
+"awardValue":  {"arID":3},
+"postPicture": null,
+"recognizees": [{"id":2},{"id":4},{"id":8}]
+}
+###
+### Create recognition without points
+POST /posts/post
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+{
+"recognizer":{"id":1},
+"postType":"Recognition",
+"postString":"hello world ....",
+"coreValue":{"coreValueID":1},
+"postPicture":null,
+"recognizees":[{"id":2}]
+}
+
+### Create recognition with points
+
+POST /posts/post
+Host: {{host}}
+Accept: application/json
+Content-Type: application/json
+
+{
+
+"recognizer": {"id":7},
+"postType": "Recognition",
+"postString": "This is a new recognition with points",
+"coreValue":{"coreValueID":3},
+"awardValue":{"arID":4},
+"postPicture": null,
+"recognizees":[{"id":2},{"id":4}],
+"existingBehaviours":[{"behaviourID":1},{"behaviourID":2}],
+"newBehaviours":[
+    {
+        "behaviourName": "team player",
+        "userID": 7
+    }
+]
+}
+###
+### Get All Posts 
+###
+GET http://localhost:8080/posts/all
+
+##
+
+### Get Posts by team
+###
+GET /posts/byTeam/1
+Host: {{host}}
+Accept: application/json
+###
+
+### Get All Recognitions 
+
+GET http://localhost:8080/posts/byType/recognition
+
+###
+### Get All Recognitions 
+
+GET http://localhost:8080/posts/byType/post
+
+###
+
+### Get All Awards
+GET http://localhost:8080/posts/byType/award
+
+###
+
+### Get Post by ID GET http://localhost:8080/api/allposts/2
+
+###
+
+### GET Posts by team
+GET http://localhost:8080/posts/byTeam/1
+### GET Posts by pyramid
+GET http://localhost:8080/posts/pyramid/1
+### Get all CoreValues
+GET http://localhost:8080/corevalues
+Accept: application/json
+
+###
+
+### Get all AwardsRecognitionsValues
+GET http://localhost:8080/awardsrecognitions
+Accept: application/json
+
+### Get all Behaviours
+GET http://localhost:8080/behaviours/1
+
+###
+GET http://localhost:8080/dashboard/shoutouts/given/month/12
+###
+GET http://localhost:8080/dashboard/shoutouts/received/month/12
+###
+GET http://localhost:8080/dashboard/awards/received/month/12
+###
+GET http://localhost:8080/dashboard/shoutouts/given/year/12
+###
+GET http://localhost:8080/dashboard/shoutouts/received/year/12
+
+### view all recognitions Given Year
+
+GET http://localhost:8080/dashboard/viewall/given/year/12
+
+###View all recognitions received Year
+GET http://localhost:8080/dashboard/viewall/received/year/12
+### view all recognitions Given Month
+
+GET http://localhost:8080/dashboard/viewall/given/month/12
+
+###View all recognitions received Month
+GET http://localhost:8080/dashboard/viewall/received/month/12
+###
+
+
+###
+### Get Trending Behaviors by TeamId
+get http://localhost:8080/trending/behaviours/team/1
+
+###
+### Get Trending Behaviors by PyramidId
+get http://localhost:8080/trending/behaviours/pyramid/1
+
+###
+### Get Trending Behaviors by UserId
+get http://localhost:8080/trending/behaviours/user/3
+
+###
+### Get Top Performers by TeamId
+GET http://localhost:8080/users/top-performers/team/9
+
+###
+### Get Top Performers by PyramidId
+GET http://localhost:8080/users/top-performers/pyramid/1
+
+###
+GET http://localhost:8080/dashboard/viewall/given/month/12
